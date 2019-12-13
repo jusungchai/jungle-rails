@@ -21,7 +21,7 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
 
   scenario "They see all products and click first item details" do
     save_screenshot("before-details-btn.png")
-    find('a.btn', match: :first).click
+    find('.product .actions a.btn', match: :first).click
     sleep 1
     expect(page).to have_css('article.product-detail')
     save_screenshot("after-details-btn.png")

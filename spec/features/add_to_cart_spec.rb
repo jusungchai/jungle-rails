@@ -19,7 +19,7 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     visit root_path
   end
 
-  scenario "They see all products and click first item details" do
+  scenario "They see all products and click add to cart" do
     expect(has_content?('My Cart (0)')).to be true
     save_screenshot("before-add-cart.png")
     find('button.btn', match: :first).click

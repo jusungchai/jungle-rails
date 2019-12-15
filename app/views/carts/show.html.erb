@@ -49,7 +49,9 @@
             data-currency="cad">
           </script>
         <% else %>
-          <div><%= link_to 'Login', '/login' %></div>
+          <div>
+            <%= link_to 'Login', [:login], class: 'btn btn-info' %>
+          </div>
         <% end %>
       <% end %>
     </div>

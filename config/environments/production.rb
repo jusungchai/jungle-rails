@@ -89,5 +89,5 @@ Rails.application.configure do
     password: ENV["GMAIL_PASSWORD"]
   }
 
-  config.action_mailer.default_url_options = { host: "lit-jungle.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "https://lit-jungle.herokuapp.com/" }
 end

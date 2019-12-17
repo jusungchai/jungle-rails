@@ -5,9 +5,9 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.new_order.subject
   #
-  def new_order
+  def new_order(email)
     @greeting = "Hi"
     
-    mail to: "btiqa771@gmail.com"
+    mail to: email
   end
 end

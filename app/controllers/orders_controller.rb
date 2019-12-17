@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
-    byebug
   end
 
   def create
@@ -53,7 +52,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
-    OrderMailer.new_order.deliver_now
+    OrderMailer.new_order(order.email).deliver_now
     order
   end
 

@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    byebug
   end
 
   def create
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_subtotal_cents,
-      description: "Khurram Virani's Jungle Order",
+      description: "#{current_user.name}'s Jungle Order",
       currency:    'cad'
     )
   end
@@ -52,6 +53,7 @@ class OrdersController < ApplicationController
       )
     end
     order.save!
+    OrderMailer.new_order.deliver_now
     order
   end
 

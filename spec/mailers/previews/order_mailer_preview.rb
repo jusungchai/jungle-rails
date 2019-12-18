@@ -3,7 +3,7 @@ class OrderMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/order_mailer/new_order
   def new_order
-    OrderMailer.new_order
+    OrderMailer.new_order(Order.find(21))
   end
 
 end

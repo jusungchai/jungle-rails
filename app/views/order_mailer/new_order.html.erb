@@ -1,5 +1,50 @@
-<h1>OrderMailer#new_order</h1>
+<div>
+  <h4>Thank you for your order!</h4>
+</div>
 
-<p>
-  <%= @greeting %>, find me in app/views/order_mailer/new_order.html.erb
-</p>
+<div>
+  ORDER SUMMARY
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% total = 0 %>
+      <% @order.line_items.each do |item| %>
+        <tr>
+          <td>
+            <h4><%= item.product.name %></h4>
+          </td>
+          <td>
+            <%= humanized_money_with_symbol item.product.price %>
+          </td>
+          <td>              
+            <%= item.quantity %>              
+          </td>
+          <td>
+            <% total += item.product.price * item.quantity %>
+            <%= humanized_money_with_symbol item.product.price * item.quantity %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          TOTAL:
+        </th>
+        <th>
+          <%= humanized_money_with_symbol total %>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>

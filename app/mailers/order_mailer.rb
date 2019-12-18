@@ -5,9 +5,10 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.new_order.subject
   #
-  def new_order(email)
+  def new_order(order)
     @greeting = "Hi"
-    
-    mail to: email
+    @order = order
+    mail to: order.email,
+         subject: "Your Jungle Order Summary: Order ##{order.id}"
   end
 end
